@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29905.134
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpresionesLogicas", "ExpresionesLogicas\ExpresionesLogicas.csproj", "{45AE0A0F-BB2D-49AA-91A2-EE80F0FD84E9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExpresionesLogicas", "ExpresionesLogicas\ExpresionesLogicas.csproj", "{45AE0A0F-BB2D-49AA-91A2-EE80F0FD84E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpresionesLogicasUI", "ExpresionesLogicasUI\ExpresionesLogicasUI.csproj", "{54E16C82-EBBA-43DF-817C-19A6C411E19A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{45AE0A0F-BB2D-49AA-91A2-EE80F0FD84E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{45AE0A0F-BB2D-49AA-91A2-EE80F0FD84E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{45AE0A0F-BB2D-49AA-91A2-EE80F0FD84E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54E16C82-EBBA-43DF-817C-19A6C411E19A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54E16C82-EBBA-43DF-817C-19A6C411E19A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54E16C82-EBBA-43DF-817C-19A6C411E19A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54E16C82-EBBA-43DF-817C-19A6C411E19A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
