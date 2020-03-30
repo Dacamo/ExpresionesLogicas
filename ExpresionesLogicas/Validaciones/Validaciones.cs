@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ExpresionesLogicas.ManejadorErrores;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -15,6 +16,7 @@ namespace ExpresionesLogicas
                 {
                     if (caracteres[i].Equals(caracteres[i + 1]) && caracteres[i].Equals("O"))
                     {
+                        GestorErrores.Reportar(Error.OPERADORES);
                         return false;
                     }
                     
@@ -31,6 +33,7 @@ namespace ExpresionesLogicas
                 {
                     if (caracteres[i].Equals(caracteres[i + 1]) && caracteres[i].Equals("P"))
                     {
+                        GestorErrores.Reportar(Error.PROPOSICIONES);
                         return false;
                     }
                 }
@@ -47,11 +50,13 @@ namespace ExpresionesLogicas
                 {
                     if (caracteres[i].Equals("(") && caracteres[i+1].Equals(")"))
                     {
+                        GestorErrores.Reportar(Error.PARENTESIS_ABRE_CIERRA);
                         return false;
                     }
 
                     if (caracteres[i].Equals(")") && caracteres[i + 1].Equals("("))
                     {
+                        GestorErrores.Reportar(Error.PARENTESIS_ABRE_CIERRA);
                         return false;
                     }
                 }
@@ -76,11 +81,12 @@ namespace ExpresionesLogicas
                 }
             }
 
-            if (parentesisAbre.Count == parentesisCierra.Count)
+            if (parentesisAbre.Count != parentesisCierra.Count)
             {
-                return true;
+                GestorErrores.Reportar(Error.PARENTESIS);
+                return false;
             }
-            return false;
+            return true;
         }
 
 
@@ -92,7 +98,15 @@ namespace ExpresionesLogicas
         }
 
        
-
+        public static bool ValidarExpresionNoVacia (List<string> caracteres)
+        {
+           if(caracteres.Count==0)
+            {
+                GestorErrores.Reportar(Error.EXPRESION_VACIA);
+                return false;
+            }
+            return true;
+        }
 
         // validar minimo una expresion y maximo 6 proposiciones
         // validar que no ingresen solo un caracter

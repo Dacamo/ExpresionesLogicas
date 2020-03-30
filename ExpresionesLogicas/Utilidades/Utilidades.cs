@@ -6,7 +6,10 @@ namespace ExpresionesLogicas
 {
     public class Utilidades
     {
-        //validar las letras con expresion regular o is char
+        static List<string> ids = new List<string> { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j" };
+        static List<string> valores = new List<string>();
+
+
         public static List<string> ReconocerCaracteres(string expresion) {
             
             List<string> caracteres = new List<string>();
@@ -46,6 +49,10 @@ namespace ExpresionesLogicas
                 }
             }
             //llenar los valores iniciales de tabla de verdad
+            if(proposicionesDefecto.Count == 1)
+            {
+                proposiciones.Add(proposicionesDefecto[0], new List<string> { "V","F" });
+            }
             if (proposicionesDefecto.Count == 2) 
             {
                 proposiciones.Add(proposicionesDefecto[0], new List<string> { "V", "V", "F", "F" });
@@ -77,9 +84,9 @@ namespace ExpresionesLogicas
 
         public static Dictionary<string, List<string>> RecorrerExpresion (List<string> caracteres, string expresion, Dictionary<string, List<string>> diccionario)
         {
+
             List<string> expresionDestino = new List<string>();
-            List<string> ids = new List<string> { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J" };
-            List<string> valores = new List<string>();
+            ids = new List<string> { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j" };
 
             int auxNumber = 0;
             bool resetear = false;
@@ -120,11 +127,27 @@ namespace ExpresionesLogicas
 
         public static Dictionary<string, List<string>> AgregarExpresionDiccionario (Dictionary<string, List<string>> diccionarioOrigen, string expresionSimple, string key)
         {
-          
+
 
             //hacer operaciones
-            var proposicion1 = diccionarioOrigen.GetValueOrDefault(expresionSimple[1].ToString());
-            var proposicion2 = diccionarioOrigen.GetValueOrDefault(expresionSimple[3].ToString());
+            //var proposicion1 = diccionarioOrigen.GetValueOrDefault(expresionSimple[1].ToString());
+            //var proposicion2 = diccionarioOrigen.GetValueOrDefault(expresionSimple[3].ToString());
+
+            List<string> proposicion1 = new List<string>();
+            List<string> proposicion2 = new List<string>();
+
+            foreach (var item in diccionarioOrigen)
+            {
+                if(item.Key == expresionSimple[1].ToString())
+                {
+                    proposicion1 = item.Value;
+                }
+
+                if (item.Key == expresionSimple[3].ToString())
+                {
+                    proposicion2 = item.Value;
+                }
+            }
             
             List<string> resultado = new List<string>();
 
@@ -247,7 +270,20 @@ namespace ExpresionesLogicas
             return expresion;
 
         }
+
+        public static string ObtenerValorById(string id)
+        {
+            var index = ids.IndexOf(id);
+            if (index >= 0)
+            {
+                return valores[index];
+            }
+            return null;
+            
+        }
+
         
+
 
     } 
 }
