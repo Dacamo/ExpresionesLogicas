@@ -27,6 +27,9 @@ namespace ExpresionesLogicasUI
         private void btnBorrar_Click(object sender, EventArgs e)
         {
             textBoxCalculadora.Clear();
+            textBox1.Clear();
+            dataGridView1.Rows.Clear();
+            dataGridView1.Columns.Clear();
         }
 
         private void btnBorrarDeAUno_Click(object sender, EventArgs e)
@@ -36,32 +39,63 @@ namespace ExpresionesLogicasUI
 
         private void btnIgual_Click(object sender, EventArgs e)
         {
-            valorIgual = true;
-            string expresion = "(" + textBoxCalculadora.Text + ")";
-            var diccionario = Analizador.AnalizarExpresion(expresion);
-            foreach (var item in diccionario)
+            string expresion = textBoxCalculadora.Text;
+            //validaciones
+            if (Analizador.ValidarExpresion(expresion))
             {
-                dataGridView1.Columns.Add(item.Key, item.Key);
+
+                //configuracion del dataGridValue
+                dataGridView1.Rows.Clear();
+                dataGridView1.Columns.Clear();
+                valorIgual = true;
+                dataGridView1.ReadOnly = true;
+                dataGridView1.DataSource = null;
+                dataGridView1.AllowUserToOrderColumns = false;
+
+
+                //Analizar expresion
+                expresion = "(" + expresion + ")";
+                var diccionario = Analizador.AnalizarExpresion(expresion);
+
+                //recorer el diccionario e imprimirlo en el datagridview
+                foreach (var item in diccionario)
+                {
+                    dataGridView1.Columns.Add(item.Key, Analizador.ObtenerValorById(item.Key));
+                }
+
+                var cantidad = diccionario.ElementAt(0).Value.Count;
+                int index = 0;
+                var lista = new List<string>();
+                for (int x = 0; x < cantidad; x++)
+                {
+                    for (int i = 0; i < diccionario.Count; i++)
+                    {
+                        var item = diccionario.ElementAt(i);
+                        lista.Add(item.Value[index]);
+                    }
+                    var vector = lista.ToArray();
+                    dataGridView1.Rows.Add(vector);
+                    lista.Clear();
+                    index++;
+                }
+            }
+            else
+            {
+                //consultar los errores y mostrarlos
+                textBox1.Clear();
+                var errores = Analizador.ObtenerErrores();
+                if (errores.Count >= 1) 
+                {
+                    textBox1.Text = errores[0];
+                }
+                else
+                {
+                    textBox1.Text = "Expresion inválida";
+                }
+                
+
             }
             
-
-            
-            //recorer el diccionario e imprimirlo en el datagridview
-            var cantidad = diccionario.ElementAt(0).Value.Count;
-            int index = 0;
-            var lista = new List<string>();
-            for (int x = 0; x < cantidad; x++)
-            { 
-                for (int i = 0; i < diccionario.Count; i++)
-                {
-                    var item = diccionario.ElementAt(i);
-                    lista.Add(item.Value[index]);
-                }
-            var vector = lista.ToArray();
-            dataGridView1.Rows.Add(vector);
-            lista.Clear();
-            index++;
-           }
         }
 
        
