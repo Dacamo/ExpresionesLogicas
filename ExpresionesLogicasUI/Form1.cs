@@ -35,7 +35,10 @@ namespace ExpresionesLogicasUI
 
         private void btnBorrarDeAUno_Click(object sender, EventArgs e)
         {
-
+            if (textBoxCalculadora.Text != "")
+            {
+                textBoxCalculadora.Text = textBoxCalculadora.Text.Substring(0, textBoxCalculadora.Text.Count() - 1);
+            }
         }
 
         private void btnIgual_Click(object sender, EventArgs e)
