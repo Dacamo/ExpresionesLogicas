@@ -20,5 +20,10 @@ namespace ExpresionesLogicas.ManejadorErrores
                 errores.Add(error);
             }
         }
+
+        public static void LimpiarErrores()
+        {
+            errores.Clear();
+        }
     }
 }

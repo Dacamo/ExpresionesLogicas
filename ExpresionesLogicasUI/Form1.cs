@@ -30,6 +30,7 @@ namespace ExpresionesLogicasUI
             textBox1.Clear();
             dataGridView1.Rows.Clear();
             dataGridView1.Columns.Clear();
+            Analizador.LimpiarErrores();
         }
 
         private void btnBorrarDeAUno_Click(object sender, EventArgs e)
@@ -39,6 +40,7 @@ namespace ExpresionesLogicasUI
 
         private void btnIgual_Click(object sender, EventArgs e)
         {
+            Analizador.LimpiarErrores();
             string expresion = textBoxCalculadora.Text;
             //validaciones
             if (Analizador.ValidarExpresion(expresion))
@@ -60,7 +62,7 @@ namespace ExpresionesLogicasUI
                 //recorer el diccionario e imprimirlo en el datagridview
                 foreach (var item in diccionario)
                 {
-                    dataGridView1.Columns.Add(item.Key, Analizador.ObtenerValorById(item.Key));
+                    dataGridView1.Columns.Add(item.Key, Analizador.ObtenerValorById(item.Key) + "=" + item.Key);
                 }
 
                 var cantidad = diccionario.ElementAt(0).Value.Count;
@@ -78,7 +80,7 @@ namespace ExpresionesLogicasUI
                     lista.Clear();
                     index++;
                 }
-                //MostrarErrores();
+                MostrarErrores();
             }
             else
             { 
@@ -97,10 +99,7 @@ namespace ExpresionesLogicasUI
             {
                 textBox1.Text = errores[0];
             }
-            else
-            {
-                textBox1.Text = "Expresion inválida";
-            }
+            
         }
 
 

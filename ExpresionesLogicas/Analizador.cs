@@ -12,6 +12,7 @@ namespace ExpresionesLogicas
             Dictionary<string, List<string>> diccionarioOrigen = new Dictionary<string, List<string>>();
             //expresion = "(((p=q)|r)=(r&(q&p)))";
             //expresion = "((p>q)|p)";
+            //expresion = "(p|q)>q>r";
             var caracteres = Utilidades.ReconocerCaracteres(expresion);
             diccionarioOrigen = Utilidades.ReconocerProposiciones(expresion);
             diccionarioOrigen = Utilidades.RecorrerExpresion(caracteres, expresion, diccionarioOrigen);
@@ -37,6 +38,11 @@ namespace ExpresionesLogicas
         public static List<string> ObtenerErrores ()
         {
             return GestorErrores.ObtenerErrores();
+        }
+
+        public static void LimpiarErrores()
+        {
+            GestorErrores.LimpiarErrores();
         }
 
     }

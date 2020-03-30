@@ -123,10 +123,10 @@ namespace ExpresionesLogicas
                
             }
 
-           /* if (caracteres.Count > 1)
+            if (expresionDestino.Count > 3)
             {
-                GestorErrores.Reportar(Error.PARENTESIS);
-            }*/
+                GestorErrores.Reportar("Expresion no balanceada, se resuelve parcialmente");            
+            }
 
             return diccionario;
         }
