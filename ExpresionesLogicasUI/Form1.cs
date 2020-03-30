@@ -19,6 +19,9 @@ namespace ExpresionesLogicasUI
         }
 
         bool valorIgual = false;
+        String[] preposiciones = { "p", "q", "r" };
+        String[] parentesis = { "(", ")" };
+        String[] operadoresLogicos = { "&", ">", "|", "=" };
         private void Form1_Load(object sender, EventArgs e)
         {
 
@@ -109,17 +112,18 @@ namespace ExpresionesLogicasUI
 
         private void btnP_Click(object sender, EventArgs e)
         {
-            
+
             if (valorIgual == true)
             {
                 textBoxCalculadora.Clear();
-                textBoxCalculadora.Text += "p";
                 valorIgual = false;
             }
-            else
+            if (textBoxCalculadora.Text != "")
             {
-                textBoxCalculadora.Text += "p";
+                compararExpresionesContinuas("p");
             }
+            else { textBoxCalculadora.Text += "p"; }
+
         }
 
         private void btnQ_Click(object sender, EventArgs e)
@@ -127,13 +131,13 @@ namespace ExpresionesLogicasUI
             if (valorIgual == true)
             {
                 textBoxCalculadora.Clear();
-                textBoxCalculadora.Text += "q";
                 valorIgual = false;
             }
-            else
+            if (textBoxCalculadora.Text != "")
             {
-                textBoxCalculadora.Text += "q";
+                compararExpresionesContinuas("q");
             }
+            else { textBoxCalculadora.Text += "q"; }
         }
 
         private void btnR_Click(object sender, EventArgs e)
@@ -141,26 +145,26 @@ namespace ExpresionesLogicasUI
             if (valorIgual == true)
             {
                 textBoxCalculadora.Clear();
-                textBoxCalculadora.Text += "r";
                 valorIgual = false;
             }
-            else
+            if (textBoxCalculadora.Text != "")
             {
-                textBoxCalculadora.Text += "r";
+                compararExpresionesContinuas("r");
             }
+            else { textBoxCalculadora.Text += "r"; }
         }
+
 
         private void btnOperadorY_Click(object sender, EventArgs e)
         {
             if (valorIgual == true)
             {
                 textBoxCalculadora.Clear();
-                textBoxCalculadora.Text += "&";
                 valorIgual = false;
             }
-            else
+            if (textBoxCalculadora.Text != "")
             {
-                textBoxCalculadora.Text += "&";
+                compararExpresionesContinuas("&");
             }
         }
 
@@ -169,13 +173,13 @@ namespace ExpresionesLogicasUI
             if (valorIgual == true)
             {
                 textBoxCalculadora.Clear();
-                textBoxCalculadora.Text += "|";
                 valorIgual = false;
             }
-            else
+            if (textBoxCalculadora.Text != "")
             {
-                textBoxCalculadora.Text += "|";
+                compararExpresionesContinuas(">");
             }
+
         }
 
         private void btnImplicacion_Click(object sender, EventArgs e)
@@ -183,12 +187,11 @@ namespace ExpresionesLogicasUI
             if (valorIgual == true)
             {
                 textBoxCalculadora.Clear();
-                textBoxCalculadora.Text += ">";
                 valorIgual = false;
             }
-            else
+            if (textBoxCalculadora.Text != "")
             {
-                textBoxCalculadora.Text += ">";
+                compararExpresionesContinuas(">");
             }
         }
 
@@ -197,12 +200,11 @@ namespace ExpresionesLogicasUI
             if (valorIgual == true)
             {
                 textBoxCalculadora.Clear();
-                textBoxCalculadora.Text += "=";
                 valorIgual = false;
             }
-            else
+            if (textBoxCalculadora.Text != "")
             {
-                textBoxCalculadora.Text += "=";
+                compararExpresionesContinuas("=");
             }
         }
 
@@ -211,13 +213,9 @@ namespace ExpresionesLogicasUI
             if (valorIgual == true)
             {
                 textBoxCalculadora.Clear();
-                textBoxCalculadora.Text += "(";
                 valorIgual = false;
             }
-            else
-            {
-                textBoxCalculadora.Text += "(";
-            }
+            textBoxCalculadora.Text += "(";
 
         }
 
@@ -226,18 +224,41 @@ namespace ExpresionesLogicasUI
             if (valorIgual == true)
             {
                 textBoxCalculadora.Clear();
-                textBoxCalculadora.Text += ")";
                 valorIgual = false;
             }
-            else
-            {
-                textBoxCalculadora.Text += ")";
-            }
+            textBoxCalculadora.Text += ")";
         }
 
         private void textBoxCalculadora_TextChanged(object sender, EventArgs e)
         {
 
+        }
+        private void compararExpresionesContinuas(String caracter)
+        {
+            String ultimoCaracter = (textBoxCalculadora.Text.Substring(textBoxCalculadora.Text.Length - 1));
+
+            if (Array.IndexOf(preposiciones, caracter) != -1)
+            {
+                if (ultimoCaracter != ")" & ultimoCaracter != "p" & ultimoCaracter != "q" & ultimoCaracter != "r")
+                {
+                    textBoxCalculadora.Text += caracter;
+                }
+                else
+                {
+                    MessageBox.Show("no se puede usar " + caracter + " despues de " + ultimoCaracter);
+                }
+            }
+            else if (Array.IndexOf(operadoresLogicos, caracter) != -1)
+            {
+                if ((Array.IndexOf(operadoresLogicos, ultimoCaracter) != -1) | ultimoCaracter == "(")
+                {
+                    MessageBox.Show("no se puede usar el operador " + caracter + " despues de " + ultimoCaracter);
+                }
+                else
+                {
+                    textBoxCalculadora.Text += caracter;
+                }
+            }
         }
     }
 }
