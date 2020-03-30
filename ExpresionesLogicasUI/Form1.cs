@@ -47,6 +47,7 @@ namespace ExpresionesLogicasUI
         private void btnIgual_Click(object sender, EventArgs e)
         {
             Analizador.LimpiarErrores();
+            Analizador.LimpiarValores();
             string expresion = textBoxCalculadora.Text;
             //validaciones
             if (Analizador.ValidarExpresion(expresion))
@@ -68,7 +69,7 @@ namespace ExpresionesLogicasUI
                 //recorer el diccionario e imprimirlo en el datagridview
                 foreach (var item in diccionario)
                 {
-                    dataGridView1.Columns.Add(item.Key, Analizador.ObtenerValorById(item.Key) + "=" + item.Key);
+                    dataGridView1.Columns.Add(item.Key, Analizador.ObtenerValorById(item.Key));
                 }
 
                 var cantidad = diccionario.ElementAt(0).Value.Count;
