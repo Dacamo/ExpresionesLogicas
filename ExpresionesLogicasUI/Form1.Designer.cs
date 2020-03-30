@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxCalculadora = new System.Windows.Forms.TextBox();
             this.btnBorrar = new System.Windows.Forms.Button();
@@ -73,6 +73,7 @@
             // btnBorrar
             // 
             this.btnBorrar.BackColor = System.Drawing.Color.Gainsboro;
+            this.btnBorrar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnBorrar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnBorrar.ForeColor = System.Drawing.Color.Red;
             this.btnBorrar.Location = new System.Drawing.Point(86, 98);
@@ -86,6 +87,7 @@
             // btnBorrarDeAUno
             // 
             this.btnBorrarDeAUno.BackColor = System.Drawing.Color.Gainsboro;
+            this.btnBorrarDeAUno.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnBorrarDeAUno.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnBorrarDeAUno.ForeColor = System.Drawing.Color.Red;
             this.btnBorrarDeAUno.Location = new System.Drawing.Point(169, 98);
@@ -99,6 +101,7 @@
             // btnIgual
             // 
             this.btnIgual.BackColor = System.Drawing.Color.Gainsboro;
+            this.btnIgual.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnIgual.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnIgual.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.btnIgual.ForeColor = System.Drawing.Color.LimeGreen;
@@ -115,6 +118,7 @@
             // btnP
             // 
             this.btnP.BackColor = System.Drawing.Color.Gainsboro;
+            this.btnP.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnP.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnP.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.btnP.ForeColor = System.Drawing.Color.DodgerBlue;
@@ -129,6 +133,7 @@
             // btnQ
             // 
             this.btnQ.BackColor = System.Drawing.Color.Gainsboro;
+            this.btnQ.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnQ.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnQ.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.btnQ.ForeColor = System.Drawing.Color.DodgerBlue;
@@ -143,6 +148,7 @@
             // btnR
             // 
             this.btnR.BackColor = System.Drawing.Color.Gainsboro;
+            this.btnR.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnR.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnR.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.btnR.ForeColor = System.Drawing.Color.DodgerBlue;
@@ -157,6 +163,7 @@
             // btnImplicacion
             // 
             this.btnImplicacion.BackColor = System.Drawing.Color.Gainsboro;
+            this.btnImplicacion.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnImplicacion.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnImplicacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F);
             this.btnImplicacion.ForeColor = System.Drawing.Color.DarkOrchid;
@@ -172,6 +179,7 @@
             // btnOperadorO
             // 
             this.btnOperadorO.BackColor = System.Drawing.Color.Gainsboro;
+            this.btnOperadorO.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnOperadorO.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnOperadorO.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.btnOperadorO.ForeColor = System.Drawing.Color.DarkOrchid;
@@ -186,6 +194,7 @@
             // btnOperadorY
             // 
             this.btnOperadorY.BackColor = System.Drawing.Color.Gainsboro;
+            this.btnOperadorY.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnOperadorY.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnOperadorY.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F);
             this.btnOperadorY.ForeColor = System.Drawing.Color.DarkOrchid;
@@ -201,6 +210,7 @@
             // BtnParentesisCierra
             // 
             this.BtnParentesisCierra.BackColor = System.Drawing.Color.Gainsboro;
+            this.BtnParentesisCierra.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnParentesisCierra.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.BtnParentesisCierra.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.BtnParentesisCierra.ForeColor = System.Drawing.Color.DarkOrchid;
@@ -215,6 +225,7 @@
             // BtnParentesisAbre
             // 
             this.BtnParentesisAbre.BackColor = System.Drawing.Color.Gainsboro;
+            this.BtnParentesisAbre.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnParentesisAbre.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.BtnParentesisAbre.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.BtnParentesisAbre.ForeColor = System.Drawing.Color.DarkOrchid;
@@ -229,6 +240,7 @@
             // btnSiYSoloSi
             // 
             this.btnSiYSoloSi.BackColor = System.Drawing.Color.Gainsboro;
+            this.btnSiYSoloSi.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSiYSoloSi.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSiYSoloSi.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.btnSiYSoloSi.ForeColor = System.Drawing.Color.DarkOrchid;
@@ -246,14 +258,14 @@
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AllowUserToResizeColumns = false;
             this.dataGridView1.AllowUserToResizeRows = false;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(412, 69);
             this.dataGridView1.Name = "dataGridView1";
