@@ -78,7 +78,7 @@ namespace ExpresionesLogicasUI
                     lista.Clear();
                     index++;
                 }
-                MostrarErrores();
+                //MostrarErrores();
             }
             else
             { 

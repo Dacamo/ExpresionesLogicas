@@ -123,10 +123,10 @@ namespace ExpresionesLogicas
                
             }
 
-            if (caracteres.Count > 1)
+           /* if (caracteres.Count > 1)
             {
                 GestorErrores.Reportar(Error.PARENTESIS);
-            }
+            }*/
 
             return diccionario;
         }
