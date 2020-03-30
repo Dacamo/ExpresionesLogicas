@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxCalculadora = new System.Windows.Forms.TextBox();
             this.btnBorrar = new System.Windows.Forms.Button();
@@ -42,6 +43,8 @@
             this.BtnParentesisCierra = new System.Windows.Forms.Button();
             this.BtnParentesisAbre = new System.Windows.Forms.Button();
             this.btnSiYSoloSi = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -57,21 +60,23 @@
             // 
             this.textBoxCalculadora.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.textBoxCalculadora.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBoxCalculadora.Location = new System.Drawing.Point(39, 32);
+            this.textBoxCalculadora.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxCalculadora.Location = new System.Drawing.Point(28, 33);
             this.textBoxCalculadora.Name = "textBoxCalculadora";
             this.textBoxCalculadora.ReadOnly = true;
-            this.textBoxCalculadora.Size = new System.Drawing.Size(379, 20);
+            this.textBoxCalculadora.Size = new System.Drawing.Size(339, 31);
             this.textBoxCalculadora.TabIndex = 11;
             this.textBoxCalculadora.TabStop = false;
+            this.textBoxCalculadora.TextChanged += new System.EventHandler(this.textBoxCalculadora_TextChanged);
             // 
             // btnBorrar
             // 
             this.btnBorrar.BackColor = System.Drawing.Color.Gainsboro;
             this.btnBorrar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnBorrar.ForeColor = System.Drawing.Color.Red;
-            this.btnBorrar.Location = new System.Drawing.Point(51, 68);
+            this.btnBorrar.Location = new System.Drawing.Point(86, 98);
             this.btnBorrar.Name = "btnBorrar";
-            this.btnBorrar.Size = new System.Drawing.Size(95, 30);
+            this.btnBorrar.Size = new System.Drawing.Size(58, 30);
             this.btnBorrar.TabIndex = 17;
             this.btnBorrar.Text = "AC";
             this.btnBorrar.UseVisualStyleBackColor = false;
@@ -82,9 +87,9 @@
             this.btnBorrarDeAUno.BackColor = System.Drawing.Color.Gainsboro;
             this.btnBorrarDeAUno.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnBorrarDeAUno.ForeColor = System.Drawing.Color.Red;
-            this.btnBorrarDeAUno.Location = new System.Drawing.Point(172, 68);
+            this.btnBorrarDeAUno.Location = new System.Drawing.Point(169, 98);
             this.btnBorrarDeAUno.Name = "btnBorrarDeAUno";
-            this.btnBorrarDeAUno.Size = new System.Drawing.Size(95, 30);
+            this.btnBorrarDeAUno.Size = new System.Drawing.Size(58, 30);
             this.btnBorrarDeAUno.TabIndex = 18;
             this.btnBorrarDeAUno.Text = "ADEL";
             this.btnBorrarDeAUno.UseVisualStyleBackColor = false;
@@ -97,9 +102,9 @@
             this.btnIgual.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.btnIgual.ForeColor = System.Drawing.Color.LimeGreen;
             this.btnIgual.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnIgual.Location = new System.Drawing.Point(303, 68);
+            this.btnIgual.Location = new System.Drawing.Point(251, 98);
             this.btnIgual.Name = "btnIgual";
-            this.btnIgual.Size = new System.Drawing.Size(100, 30);
+            this.btnIgual.Size = new System.Drawing.Size(58, 30);
             this.btnIgual.TabIndex = 19;
             this.btnIgual.Text = "=";
             this.btnIgual.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -112,7 +117,7 @@
             this.btnP.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnP.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.btnP.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.btnP.Location = new System.Drawing.Point(65, 107);
+            this.btnP.Location = new System.Drawing.Point(86, 148);
             this.btnP.Name = "btnP";
             this.btnP.Size = new System.Drawing.Size(58, 37);
             this.btnP.TabIndex = 20;
@@ -126,7 +131,7 @@
             this.btnQ.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnQ.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.btnQ.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.btnQ.Location = new System.Drawing.Point(194, 107);
+            this.btnQ.Location = new System.Drawing.Point(169, 148);
             this.btnQ.Name = "btnQ";
             this.btnQ.Size = new System.Drawing.Size(58, 37);
             this.btnQ.TabIndex = 21;
@@ -140,7 +145,7 @@
             this.btnR.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnR.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.btnR.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.btnR.Location = new System.Drawing.Point(323, 107);
+            this.btnR.Location = new System.Drawing.Point(251, 148);
             this.btnR.Name = "btnR";
             this.btnR.Size = new System.Drawing.Size(58, 37);
             this.btnR.TabIndex = 22;
@@ -154,7 +159,7 @@
             this.btnImplicacion.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnImplicacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F);
             this.btnImplicacion.ForeColor = System.Drawing.Color.DarkOrchid;
-            this.btnImplicacion.Location = new System.Drawing.Point(323, 169);
+            this.btnImplicacion.Location = new System.Drawing.Point(251, 200);
             this.btnImplicacion.Name = "btnImplicacion";
             this.btnImplicacion.Size = new System.Drawing.Size(58, 37);
             this.btnImplicacion.TabIndex = 26;
@@ -169,7 +174,7 @@
             this.btnOperadorO.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnOperadorO.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.btnOperadorO.ForeColor = System.Drawing.Color.DarkOrchid;
-            this.btnOperadorO.Location = new System.Drawing.Point(194, 169);
+            this.btnOperadorO.Location = new System.Drawing.Point(169, 201);
             this.btnOperadorO.Name = "btnOperadorO";
             this.btnOperadorO.Size = new System.Drawing.Size(58, 37);
             this.btnOperadorO.TabIndex = 25;
@@ -183,7 +188,7 @@
             this.btnOperadorY.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnOperadorY.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F);
             this.btnOperadorY.ForeColor = System.Drawing.Color.DarkOrchid;
-            this.btnOperadorY.Location = new System.Drawing.Point(65, 169);
+            this.btnOperadorY.Location = new System.Drawing.Point(86, 201);
             this.btnOperadorY.Name = "btnOperadorY";
             this.btnOperadorY.Size = new System.Drawing.Size(58, 37);
             this.btnOperadorY.TabIndex = 24;
@@ -198,7 +203,7 @@
             this.BtnParentesisCierra.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.BtnParentesisCierra.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.BtnParentesisCierra.ForeColor = System.Drawing.Color.DarkOrchid;
-            this.BtnParentesisCierra.Location = new System.Drawing.Point(323, 229);
+            this.BtnParentesisCierra.Location = new System.Drawing.Point(251, 259);
             this.BtnParentesisCierra.Name = "BtnParentesisCierra";
             this.BtnParentesisCierra.Size = new System.Drawing.Size(58, 37);
             this.BtnParentesisCierra.TabIndex = 30;
@@ -212,7 +217,7 @@
             this.BtnParentesisAbre.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.BtnParentesisAbre.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.BtnParentesisAbre.ForeColor = System.Drawing.Color.DarkOrchid;
-            this.BtnParentesisAbre.Location = new System.Drawing.Point(194, 229);
+            this.BtnParentesisAbre.Location = new System.Drawing.Point(169, 259);
             this.BtnParentesisAbre.Name = "BtnParentesisAbre";
             this.BtnParentesisAbre.Size = new System.Drawing.Size(58, 37);
             this.BtnParentesisAbre.TabIndex = 29;
@@ -226,7 +231,7 @@
             this.btnSiYSoloSi.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSiYSoloSi.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.btnSiYSoloSi.ForeColor = System.Drawing.Color.DarkOrchid;
-            this.btnSiYSoloSi.Location = new System.Drawing.Point(65, 229);
+            this.btnSiYSoloSi.Location = new System.Drawing.Point(86, 259);
             this.btnSiYSoloSi.Name = "btnSiYSoloSi";
             this.btnSiYSoloSi.Size = new System.Drawing.Size(58, 37);
             this.btnSiYSoloSi.TabIndex = 28;
@@ -234,12 +239,33 @@
             this.btnSiYSoloSi.UseVisualStyleBackColor = false;
             this.btnSiYSoloSi.Click += new System.EventHandler(this.btnSiYSoloSi_Click);
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToResizeColumns = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(411, 75);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(855, 200);
+            this.dataGridView1.TabIndex = 31;
+            // 
             // formCalculadora
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.LightCyan;
-            this.ClientSize = new System.Drawing.Size(439, 315);
+            this.BackColor = System.Drawing.Color.SeaShell;
+            this.ClientSize = new System.Drawing.Size(1312, 315);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.BtnParentesisCierra);
             this.Controls.Add(this.BtnParentesisAbre);
             this.Controls.Add(this.btnSiYSoloSi);
@@ -260,6 +286,7 @@
             this.Name = "formCalculadora";
             this.Text = "Calculadora";
             this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -281,6 +308,7 @@
         private System.Windows.Forms.Button BtnParentesisCierra;
         private System.Windows.Forms.Button BtnParentesisAbre;
         private System.Windows.Forms.Button btnSiYSoloSi;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }
 

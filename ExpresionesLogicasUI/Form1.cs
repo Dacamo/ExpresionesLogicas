@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ExpresionesLogicas;
 
 namespace ExpresionesLogicasUI
 {
@@ -35,9 +36,35 @@ namespace ExpresionesLogicasUI
 
         private void btnIgual_Click(object sender, EventArgs e)
         {
-            textBoxCalculadora.Clear();
             valorIgual = true;
+            string expresion = "(" + textBoxCalculadora.Text + ")";
+            var diccionario = Analizador.AnalizarExpresion(expresion);
+            foreach (var item in diccionario)
+            {
+                dataGridView1.Columns.Add(item.Key, item.Key);
+            }
+            
+
+            
+            //recorer el diccionario e imprimirlo en el datagridview
+            var cantidad = diccionario.ElementAt(0).Value.Count;
+            int index = 0;
+            var lista = new List<string>();
+            for (int x = 0; x < cantidad; x++)
+            { 
+                for (int i = 0; i < diccionario.Count; i++)
+                {
+                    var item = diccionario.ElementAt(i);
+                    lista.Add(item.Value[index]);
+                }
+            var vector = lista.ToArray();
+            dataGridView1.Rows.Add(vector);
+            lista.Clear();
+            index++;
+           }
         }
+
+       
 
         private void btnP_Click(object sender, EventArgs e)
         {
@@ -45,12 +72,12 @@ namespace ExpresionesLogicasUI
             if (valorIgual == true)
             {
                 textBoxCalculadora.Clear();
-                textBoxCalculadora.Text += "P";
+                textBoxCalculadora.Text += "p";
                 valorIgual = false;
             }
             else
             {
-                textBoxCalculadora.Text += "P";
+                textBoxCalculadora.Text += "p";
             }
         }
 
@@ -59,12 +86,12 @@ namespace ExpresionesLogicasUI
             if (valorIgual == true)
             {
                 textBoxCalculadora.Clear();
-                textBoxCalculadora.Text += "Q";
+                textBoxCalculadora.Text += "q";
                 valorIgual = false;
             }
             else
             {
-                textBoxCalculadora.Text += "Q";
+                textBoxCalculadora.Text += "q";
             }
         }
 
@@ -73,12 +100,12 @@ namespace ExpresionesLogicasUI
             if (valorIgual == true)
             {
                 textBoxCalculadora.Clear();
-                textBoxCalculadora.Text += "R";
+                textBoxCalculadora.Text += "r";
                 valorIgual = false;
             }
             else
             {
-                textBoxCalculadora.Text += "R";
+                textBoxCalculadora.Text += "r";
             }
         }
 
@@ -87,12 +114,12 @@ namespace ExpresionesLogicasUI
             if (valorIgual == true)
             {
                 textBoxCalculadora.Clear();
-                textBoxCalculadora.Text += "∧";
+                textBoxCalculadora.Text += "&";
                 valorIgual = false;
             }
             else
             {
-                textBoxCalculadora.Text += "∧";
+                textBoxCalculadora.Text += "&";
             }
         }
 
@@ -101,12 +128,12 @@ namespace ExpresionesLogicasUI
             if (valorIgual == true)
             {
                 textBoxCalculadora.Clear();
-                textBoxCalculadora.Text += "V";
+                textBoxCalculadora.Text += "|";
                 valorIgual = false;
             }
             else
             {
-                textBoxCalculadora.Text += "V";
+                textBoxCalculadora.Text += "|";
             }
         }
 
@@ -115,12 +142,12 @@ namespace ExpresionesLogicasUI
             if (valorIgual == true)
             {
                 textBoxCalculadora.Clear();
-                textBoxCalculadora.Text += "→";
+                textBoxCalculadora.Text += ">";
                 valorIgual = false;
             }
             else
             {
-                textBoxCalculadora.Text += "→";
+                textBoxCalculadora.Text += ">";
             }
         }
 
@@ -129,12 +156,12 @@ namespace ExpresionesLogicasUI
             if (valorIgual == true)
             {
                 textBoxCalculadora.Clear();
-                textBoxCalculadora.Text += "↔";
+                textBoxCalculadora.Text += "=";
                 valorIgual = false;
             }
             else
             {
-                textBoxCalculadora.Text += "↔";
+                textBoxCalculadora.Text += "=";
             }
         }
 
@@ -165,6 +192,11 @@ namespace ExpresionesLogicasUI
             {
                 textBoxCalculadora.Text += ")";
             }
+        }
+
+        private void textBoxCalculadora_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

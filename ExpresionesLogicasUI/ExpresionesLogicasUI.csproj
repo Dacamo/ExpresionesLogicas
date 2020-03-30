@@ -79,5 +79,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ExpresionesLogicas\ExpresionesLogicas.csproj">
+      <Project>{45ae0a0f-bb2d-49aa-91a2-ee80f0fd84e9}</Project>
+      <Name>ExpresionesLogicas</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
