@@ -78,27 +78,32 @@ namespace ExpresionesLogicasUI
                     lista.Clear();
                     index++;
                 }
+                MostrarErrores();
             }
             else
-            {
-                //consultar los errores y mostrarlos
-                textBox1.Clear();
-                var errores = Analizador.ObtenerErrores();
-                if (errores.Count >= 1) 
-                {
-                    textBox1.Text = errores[0];
-                }
-                else
-                {
-                    textBox1.Text = "Expresion inválida";
-                }
-                
-
+            { 
+                MostrarErrores();
+              
             }
             
         }
 
-       
+        void MostrarErrores()
+        {
+            //consultar los errores y mostrarlos
+            textBox1.Clear();
+            var errores = Analizador.ObtenerErrores();
+            if (errores.Count >= 1)
+            {
+                textBox1.Text = errores[0];
+            }
+            else
+            {
+                textBox1.Text = "Expresion inválida";
+            }
+        }
+
+
 
         private void btnP_Click(object sender, EventArgs e)
         {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ExpresionesLogicas.ManejadorErrores;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -120,6 +121,11 @@ namespace ExpresionesLogicas
                     
                 }
                
+            }
+
+            if (caracteres.Count > 1)
+            {
+                GestorErrores.Reportar(Error.PARENTESIS);
             }
 
             return diccionario;
