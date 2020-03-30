@@ -288,6 +288,11 @@ namespace ExpresionesLogicas
             
         }
 
+        public static void LimpiarValores ()
+        {
+            valores.Clear();
+        }
+
         
 
 

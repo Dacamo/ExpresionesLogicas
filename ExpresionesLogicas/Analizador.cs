@@ -45,5 +45,10 @@ namespace ExpresionesLogicas
             GestorErrores.LimpiarErrores();
         }
 
+        public static void LimpiarValores()
+        {
+            Utilidades.LimpiarValores();
+        }
+
     }
 }
