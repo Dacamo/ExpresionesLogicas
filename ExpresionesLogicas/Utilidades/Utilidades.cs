@@ -9,6 +9,7 @@ namespace ExpresionesLogicas
     {
         static List<string> ids = new List<string> { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j" };
         static List<string> valores = new List<string>();
+        static List<string> valoresFinales = new List<string>();
 
 
         public static List<string> ReconocerCaracteres(string expresion) {
@@ -127,7 +128,7 @@ namespace ExpresionesLogicas
             {
                 GestorErrores.Reportar("Expresion no balanceada, se resuelve parcialmente");            
             }
-
+            valoresFinales = valores;
             return diccionario;
         }
 
@@ -291,6 +292,32 @@ namespace ExpresionesLogicas
         public static void LimpiarValores ()
         {
             valores.Clear();
+        }
+
+        public static string ArmarExpresionFinal (string expresion)
+        {
+            string nuevaExpresion = "";
+            int index = 0;
+           
+            foreach (var item in expresion)
+            {
+                if(char.IsLetter(item) && item != 'p' && item != 'q' && item != 'r' )
+                {
+                    index = ids.IndexOf(item.ToString());
+                    nuevaExpresion += valores[index];
+                    
+                }
+                else
+                {
+                    nuevaExpresion += item;
+                }
+            }
+            
+             valores[valores.IndexOf(expresion)] = nuevaExpresion;
+            
+            
+            return nuevaExpresion;
+
         }
 
         
