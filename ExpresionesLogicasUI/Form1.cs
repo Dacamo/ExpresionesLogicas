@@ -13,14 +13,17 @@ namespace ExpresionesLogicasUI
 {
     public partial class formCalculadora : Form
     {
+
+        bool valorIgual = false;
+        String[] preposiciones = { "p", "q", "r" };
+        String[] operadoresLogicos = { "&", ">", "|", "=" };
+
         public formCalculadora()
         {
             InitializeComponent();
         }
 
-        bool valorIgual = false;
-        String[] preposiciones = { "p", "q", "r" };
-        String[] operadoresLogicos = { "&", ">", "|", "=" };
+        
         private void Form1_Load(object sender, EventArgs e)
         {
 
@@ -33,6 +36,7 @@ namespace ExpresionesLogicasUI
             dataGridView1.Rows.Clear();
             dataGridView1.Columns.Clear();
             Analizador.LimpiarErrores();
+            this.Size = new Size(408, 431);
         }
 
         private void btnBorrarDeAUno_Click(object sender, EventArgs e)
@@ -68,7 +72,18 @@ namespace ExpresionesLogicasUI
                 //recorer el diccionario e imprimirlo en el datagridview
                 foreach (var item in diccionario)
                 {
-                    dataGridView1.Columns.Add(item.Key, Analizador.ObtenerValorById(item.Key));
+                    var nuevaExpresion = "";
+                    var valorById = Analizador.ObtenerValorById(item.Key);
+                    if(valorById == null)
+                    {
+                        nuevaExpresion = item.Key;
+                    }
+                    else
+                    {
+                        nuevaExpresion = Analizador.ArmarExpresion(valorById);
+                    }
+                    
+                    dataGridView1.Columns.Add(item.Key, nuevaExpresion);
                 }
 
                 var cantidad = diccionario.ElementAt(0).Value.Count;
@@ -87,13 +102,15 @@ namespace ExpresionesLogicasUI
                     index++;
                 }
                 MostrarErrores();
+                this.Size = new Size(1328, 431);
             }
             else
             { 
                 MostrarErrores();
-              
             }
+
             
+
         }
 
         void MostrarErrores()
@@ -272,6 +289,17 @@ namespace ExpresionesLogicasUI
                     textBoxCalculadora.Text += caracter;
                 }
             }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           
+            textBoxCalculadora.Text = comboBox1.Text;
         }
     }
 }
