@@ -45,7 +45,12 @@ namespace ExpresionesLogicasUI
             {
                 textBoxCalculadora.Text = textBoxCalculadora.Text.Substring(0, textBoxCalculadora.Text.Count() - 1);
             }
-        }
+        }/// <summary>
+        /// Metodo que evalua la expresion para saber si la cantidad de preposiciones se encuetra
+        /// entre 2 como minimo y 6 como maximo
+        /// </summary>
+        /// <param name="expresion">parametro para analizar las preposiciones que contiene y saber cuantas contiene</param>
+        /// <returns> retorna true si la cantidad de preposiciones es valida, en caso contrario false</returns>
         private bool cantidadDeProposicionesValidas(string expresion)
         {
             bool cantidadProposicionesValidas = false;
@@ -63,6 +68,7 @@ namespace ExpresionesLogicasUI
             }
             return cantidadProposicionesValidas;
         }
+
         private void btnIgual_Click(object sender, EventArgs e)
         {
             Analizador.LimpiarErrores();
@@ -283,6 +289,12 @@ namespace ExpresionesLogicasUI
         {
 
         }
+        /// <summary>
+        /// Metodo para comparar el ultimo caracter que se ha ingresado con el que esta a punto de ser ingresado
+        /// para verificar que despues del ultimo caracter que se ingreso, el caracter que se ingrese sea valido
+        /// en el caso que sea valido se inserta al textBox
+        /// </summary>
+        /// <param name="caracter"></param>
         private void compararExpresionesContinuas(String caracter)
         {
             String ultimoCaracter = (textBoxCalculadora.Text.Substring(textBoxCalculadora.Text.Length - 1));

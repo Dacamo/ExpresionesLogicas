@@ -12,10 +12,11 @@ namespace ExpresionesLogicas
         static List<string> valoresFinales = new List<string>();
 
         /// <summary>
-        /// Reconoce los caracteres 
+        /// Metodo que reconoce los caracteres de una expresion y los agrega a una lista de caracteres en el cual
+        /// si es un operador logico se agrega un caracter O que indica Operador logico y si es una preposicion se agrega una P
         /// </summary>
-        /// <param name="expresion">expresion </param>
-        /// <returns> </returns>
+        /// <param name="expresion">expresion  </param>
+        /// <returns> retorna una lista de dichos carecter </returns>
         public static List<string> ReconocerCaracteres(string expresion) {
             
             List<string> caracteres = new List<string>();
@@ -37,7 +38,12 @@ namespace ExpresionesLogicas
             }
             return caracteres;
         }
-
+        /// <summary>
+        /// Metodo que reconoce las preposiciones y las guarda en un diccionario del tipo clave y valor,
+        /// en donde la clave será la preposicion y en valor una lista que indica la tabla de verdad correspondiente
+        /// </summary>
+        /// <param name="expresion"></param>
+        /// <returns> retorna un diccionario de la forma dicha anterirormente</returns>
         public static Dictionary<string, List<string>> ReconocerProposiciones(string expresion) {
 
             Dictionary<string, List<string>> proposiciones = new Dictionary<string, List<string>>();
@@ -74,20 +80,14 @@ namespace ExpresionesLogicas
 
             return proposiciones;
         }
-
-        public static void ImprimirDiccionario(Dictionary<string, List<string>> diccionario)
-        {
-            foreach (var item in diccionario)
-            {
-                Console.WriteLine("-->" + item.Key);
-                var lista = item.Value;
-                foreach (var item2 in lista)
-                {
-                    Console.WriteLine(item2);
-                }
-            }
-        }
-
+        /// <summary>
+        /// Recorre la expresion completa en busca de expresiones del tipo (P O P) ->( preposicion operadorLogico preposicion)
+        /// para ser reemplazada por un id y así ir resolviendo recursivamente las expresiones del tipo (P O P)
+        /// </summary>
+        /// <param name="caracteres"></param>
+        /// <param name="expresion"></param>
+        /// <param name="diccionario"></param>
+        /// <returns>retorna un diccionario</returns>
         public static Dictionary<string, List<string>> RecorrerExpresion (List<string> caracteres, string expresion, Dictionary<string, List<string>> diccionario)
         {
 
@@ -135,15 +135,15 @@ namespace ExpresionesLogicas
             valoresFinales = valores;
             return diccionario;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="diccionarioOrigen"></param>
+        /// <param name="expresionSimple"></param>
+        /// <param name="key"></param>
+        /// <returns></returns>
         public static Dictionary<string, List<string>> AgregarExpresionDiccionario (Dictionary<string, List<string>> diccionarioOrigen, string expresionSimple, string key)
         {
-
-
-            //hacer operaciones
-            //var proposicion1 = diccionarioOrigen.GetValueOrDefault(expresionSimple[1].ToString());
-            //var proposicion2 = diccionarioOrigen.GetValueOrDefault(expresionSimple[3].ToString());
-
             List<string> proposicion1 = new List<string>();
             List<string> proposicion2 = new List<string>();
 
