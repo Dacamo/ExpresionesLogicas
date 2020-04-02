@@ -6,7 +6,7 @@ using System.Text;
 namespace ExpresionesLogicas
 {
     public class Analizador
-    {
+    {   
         public static Dictionary<string, List<string>> AnalizarExpresion (string expresion)
         {
             Dictionary<string, List<string>> diccionarioOrigen = new Dictionary<string, List<string>>();

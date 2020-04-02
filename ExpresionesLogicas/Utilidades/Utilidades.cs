@@ -11,7 +11,11 @@ namespace ExpresionesLogicas
         static List<string> valores = new List<string>();
         static List<string> valoresFinales = new List<string>();
 
-
+        /// <summary>
+        /// Reconoce los caracteres 
+        /// </summary>
+        /// <param name="expresion">expresion </param>
+        /// <returns> </returns>
         public static List<string> ReconocerCaracteres(string expresion) {
             
             List<string> caracteres = new List<string>();
@@ -103,7 +107,7 @@ namespace ExpresionesLogicas
             {
                 if (resetear)
                 {
-                    i = 0;
+                        i = 0;
                     resetear = false;
                 }
                 if (caracteres[i] == "(" && caracteres[i + 1] == "P" && caracteres[i + 2] == "O" && caracteres[i + 3] == "P" && caracteres[i+4]== ")")

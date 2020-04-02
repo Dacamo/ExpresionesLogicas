@@ -15,7 +15,7 @@ namespace ExpresionesLogicasUI
     {
 
         bool valorIgual = false;
-        String[] preposiciones = { "p", "q", "r" };
+        String[] proposiciones = { "p", "q", "r" };
         String[] operadoresLogicos = { "&", ">", "|", "=" };
 
         public formCalculadora()
@@ -46,69 +46,89 @@ namespace ExpresionesLogicasUI
                 textBoxCalculadora.Text = textBoxCalculadora.Text.Substring(0, textBoxCalculadora.Text.Count() - 1);
             }
         }
-
+        private bool cantidadDeProposicionesValidas(string expresion)
+        {
+            bool cantidadProposicionesValidas = false;
+            int cantidad = 0;
+            foreach (var item in expresion)
+            {
+                if (item.Equals('p') || item.Equals('q') || item.Equals('r'))
+                {
+                    cantidad+=1;
+                }
+            }
+            if(cantidad>=2 & cantidad <= 6)
+            {
+                cantidadProposicionesValidas = true;
+            }
+            return cantidadProposicionesValidas;
+        }
         private void btnIgual_Click(object sender, EventArgs e)
         {
             Analizador.LimpiarErrores();
             Analizador.LimpiarValores();
             string expresion = textBoxCalculadora.Text;
             //validaciones
-            if (Analizador.ValidarExpresion(expresion))
+            if (cantidadDeProposicionesValidas(expresion))
             {
-
-                //configuracion del dataGridValue
-                dataGridView1.Rows.Clear();
-                dataGridView1.Columns.Clear();
-                valorIgual = true;
-                dataGridView1.ReadOnly = true;
-                dataGridView1.DataSource = null;
-                dataGridView1.AllowUserToOrderColumns = false;
-
-
-                //Analizar expresion
-                expresion = "(" + expresion + ")";
-                var diccionario = Analizador.AnalizarExpresion(expresion);
-
-                //recorer el diccionario e imprimirlo en el datagridview
-                foreach (var item in diccionario)
+                if (Analizador.ValidarExpresion(expresion))
                 {
-                    var nuevaExpresion = "";
-                    var valorById = Analizador.ObtenerValorById(item.Key);
-                    if(valorById == null)
-                    {
-                        nuevaExpresion = item.Key;
-                    }
-                    else
-                    {
-                        nuevaExpresion = Analizador.ArmarExpresion(valorById);
-                    }
-                    
-                    dataGridView1.Columns.Add(item.Key, nuevaExpresion);
-                }
 
-                var cantidad = diccionario.ElementAt(0).Value.Count;
-                int index = 0;
-                var lista = new List<string>();
-                for (int x = 0; x < cantidad; x++)
+                    //configuracion del dataGridValue
+                    dataGridView1.Rows.Clear();
+                    dataGridView1.Columns.Clear();
+                    valorIgual = true;
+                    dataGridView1.ReadOnly = true;
+                    dataGridView1.DataSource = null;
+                    dataGridView1.AllowUserToOrderColumns = false;
+
+
+                    //Analizar expresion
+                    expresion = "(" + expresion + ")";
+                    var diccionario = Analizador.AnalizarExpresion(expresion);
+
+                    //recorrer el diccionario e imprimirlo en el datagridview
+                    foreach (var item in diccionario)
+                    {
+                        var nuevaExpresion = "";
+                        var valorById = Analizador.ObtenerValorById(item.Key);
+                        if (valorById == null)
+                        {
+                            nuevaExpresion = item.Key;
+                        }
+                        else
+                        {
+                            nuevaExpresion = Analizador.ArmarExpresion(valorById);
+                        }
+
+                        dataGridView1.Columns.Add(item.Key, nuevaExpresion);
+                    }
+
+                    var cantidad = diccionario.ElementAt(0).Value.Count;
+                    int index = 0;
+                    var lista = new List<string>();
+                    for (int x = 0; x < cantidad; x++)
+                    {
+                        for (int i = 0; i < diccionario.Count; i++)
+                        {
+                            var item = diccionario.ElementAt(i);
+                            lista.Add(item.Value[index]);
+                        }
+                        var vector = lista.ToArray();
+                        dataGridView1.Rows.Add(vector);
+                        lista.Clear();
+                        index++;
+                    }
+                    MostrarErrores();
+                    this.Size = new Size(1328, 431);
+                }
+                else
                 {
-                    for (int i = 0; i < diccionario.Count; i++)
-                    {
-                        var item = diccionario.ElementAt(i);
-                        lista.Add(item.Value[index]);
-                    }
-                    var vector = lista.ToArray();
-                    dataGridView1.Rows.Add(vector);
-                    lista.Clear();
-                    index++;
+                    MostrarErrores();
                 }
-                MostrarErrores();
-                this.Size = new Size(1328, 431);
             }
-            else
-            { 
-                MostrarErrores();
-            }
-
+            else { MessageBox.Show("La cantidad de proposiciones están limitadas a 2 como minimo y 6 como maximo\npor favor ingresa una cantidad valida",
+                "Cantidad de preposiciones no valida",MessageBoxButtons.OK,MessageBoxIcon.Error); }
             
 
         }
@@ -267,7 +287,7 @@ namespace ExpresionesLogicasUI
         {
             String ultimoCaracter = (textBoxCalculadora.Text.Substring(textBoxCalculadora.Text.Length - 1));
 
-            if ((Array.IndexOf(preposiciones, caracter) != -1)|| caracter == "(")
+            if ((Array.IndexOf(proposiciones, caracter) != -1)|| caracter == "(")
             {
                 if (ultimoCaracter != ")" & ultimoCaracter != "p" & ultimoCaracter != "q" & ultimoCaracter != "r")
                 {
