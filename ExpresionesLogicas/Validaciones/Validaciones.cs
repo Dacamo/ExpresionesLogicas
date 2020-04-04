@@ -1,13 +1,16 @@
 ﻿using ExpresionesLogicas.ManejadorErrores;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Text.RegularExpressions;
 
 namespace ExpresionesLogicas
 {
     public class Validaciones
     {
+        /// <summary>
+        /// Se recibe una lista de caracteres y si encuentra un operador seguido de otro operador se retorna false, por ejemplo: (POOP) retorna false, (POP) retorna true.
+        /// </summary>
+        /// <param name="caracteres"></param>
+        /// <returns>Retorna un booleano</returns>
         public static bool ValidarOperadores(List<string> caracteres)
         {
             for (int i = 0; i < caracteres.Count; i++)
@@ -24,7 +27,11 @@ namespace ExpresionesLogicas
             }
             return true;
         }
-
+        /// <summary>
+        /// Se recibe una lista de caracteres y si encuentra una proposicion seguida de otra se retorna false, por ejemplo: (PPOP) retorna false, (POP) retorna true.
+        /// </summary>
+        /// <param name="caracteres"></param>
+        /// <returns>Se retorna un booleano</returns>
         public static bool ValidarProposiciones(List<string> caracteres)
         {
             for (int i = 0; i < caracteres.Count; i++)
@@ -41,7 +48,11 @@ namespace ExpresionesLogicas
 
             return true;
         }
-
+        /// <summary>
+        /// Si encuentra las siguientes esctructuras () )( en la lista de caraceteres se retorna false
+        /// </summary>
+        /// <param name="caracteres"></param>
+        /// <returns>Se retorna un booleano</returns>
         public static bool ValidarParentesis(List<string> caracteres)
         {
             for (int i = 0; i < caracteres.Count; i++)
@@ -64,7 +75,11 @@ namespace ExpresionesLogicas
 
             return true;
         }
-
+        /// <summary>
+        /// Permite verificar que la cantidad de parentesis que abran sea igual  la cantidad de parentesis que cierran
+        /// </summary>
+        /// <param name="caracteres"></param>
+        /// <returns>Se returna un booleano</returns>
         public static bool ValidarBalanceoParentesis (List<string> caracteres) 
         {
             List<string> parentesisAbre = new List<string>();
@@ -89,15 +104,11 @@ namespace ExpresionesLogicas
             return true;
         }
 
-
-       
-
-        public static bool ValidarBalanceoExpresion (List<string> caracteres)
-        {
-            return true;
-        }
-
-       
+       /// <summary>
+       /// Permite determinar que una  lista ingresada no tenga la expresion vacia y de esta maneraa se retorna true
+       /// </summary>
+       /// <param name="caracteres"></param>
+       /// <returns>Se retorna un booleano</returns>
         public static bool ValidarExpresionNoVacia (List<string> caracteres)
         {
            if(caracteres.Count==0)
@@ -107,10 +118,6 @@ namespace ExpresionesLogicas
             }
             return true;
         }
-
-        // validar minimo una expresion y maximo 6 proposiciones
-        // validar que no ingresen solo un caracter
-        // validar que antes o despues de un parentesis no exista una p
 
     }
 }

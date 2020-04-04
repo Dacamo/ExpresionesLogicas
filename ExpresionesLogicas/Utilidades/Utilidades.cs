@@ -13,10 +13,10 @@ namespace ExpresionesLogicas
 
         /// <summary>
         /// Metodo que reconoce los caracteres de una expresion y los agrega a una lista de caracteres en el cual
-        /// si es un operador logico se agrega un caracter O que indica Operador logico y si es una preposicion se agrega una P
+        /// si es un operador logico se agrega un caracter "O" que indica Operador logico y si es una preposicion se agrega una "P"
         /// </summary>
         /// <param name="expresion">expresion  </param>
-        /// <returns> retorna una lista de dichos carecter </returns>
+        /// <returns> retorna una lista de tipo string </returns>
         public static List<string> ReconocerCaracteres(string expresion) {
             
             List<string> caracteres = new List<string>();
@@ -39,11 +39,11 @@ namespace ExpresionesLogicas
             return caracteres;
         }
         /// <summary>
-        /// Metodo que reconoce las preposiciones y las guarda en un diccionario del tipo clave y valor,
-        /// en donde la clave será la preposicion y en valor una lista que indica la tabla de verdad correspondiente
+        /// Metodo que reconoce las proposiciones y las guarda en un diccionario del tipo clave y valor,
+        /// en donde la clave será la proposicion y en valor una lista que indica la tabla de verdad correspondiente
         /// </summary>
         /// <param name="expresion"></param>
-        /// <returns> retorna un diccionario de la forma dicha anterirormente</returns>
+        /// <returns> retorna un diccionario con clave: proposicion y valor: tabla de verdad</returns>
         public static Dictionary<string, List<string>> ReconocerProposiciones(string expresion) {
 
             Dictionary<string, List<string>> proposiciones = new Dictionary<string, List<string>>();
@@ -81,7 +81,7 @@ namespace ExpresionesLogicas
             return proposiciones;
         }
         /// <summary>
-        /// Recorre la expresion completa en busca de expresiones del tipo (P O P) ->( preposicion operadorLogico preposicion)
+        /// Recorre la expresion completa en busca de expresiones del tipo (P O P) ->( proposicion operadorLogico preposicion)
         /// para ser reemplazada por un id y así ir resolviendo recursivamente las expresiones del tipo (P O P)
         /// </summary>
         /// <param name="caracteres"></param>
@@ -136,12 +136,12 @@ namespace ExpresionesLogicas
             return diccionario;
         }
         /// <summary>
-        /// 
+        /// Opera una expresion del tipo (P O P) y el resultado lo agrega al diccionario con su key respectivo
         /// </summary>
         /// <param name="diccionarioOrigen"></param>
         /// <param name="expresionSimple"></param>
         /// <param name="key"></param>
-        /// <returns></returns>
+        /// <returns> Retorna un diccionario con key = proposcion y value: tabla de valores correspondiente</returns>
         public static Dictionary<string, List<string>> AgregarExpresionDiccionario (Dictionary<string, List<string>> diccionarioOrigen, string expresionSimple, string key)
         {
             List<string> proposicion1 = new List<string>();
@@ -177,7 +177,14 @@ namespace ExpresionesLogicas
 
             return diccionarioOrigen;
         }
-
+        /// <summary>
+        /// Realizar la operacion de una expresion booleana de acuerdo al operador ingresado por ejemplo 
+        /// izq=V, der= V operador= | entonces se obtiene el resultado de operar V|V= V
+        /// </summary>
+        /// <param name="izq"></param>
+        /// <param name="der"></param>
+        /// <param name="operador"></param>
+        /// <returns>Retorna el resultado de la operacion de la expresion booleana</returns>
         public static string OperarExpresionBooleana (string izq, string der, string operador)
         {
            
@@ -273,7 +280,14 @@ namespace ExpresionesLogicas
 
             return null;
         }
-
+        /// <summary>
+        /// Reemplaza un valor dentro de una expresion, por ejemplo se recibe la expresion ((p|q)|r)
+        /// inicio = 1, aux = "A" entonces se opera asi: (A|r)
+        /// </summary>
+        /// <param name="expresion"></param>
+        /// <param name="inicio"></param>
+        /// <param name="aux"></param>
+        /// <returns>Retorna una lista de tipo string</returns>
         public static List<string> ReemplazarExpresion (List<string> expresion, int inicio, string aux) 
         {
             expresion.RemoveRange(inicio, 5);
@@ -281,7 +295,11 @@ namespace ExpresionesLogicas
             return expresion;
 
         }
-
+        /// <summary>
+        /// De la lista de valores se obtiene el respectivo valor con el id que se recibe
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public static string ObtenerValorById(string id)
         {
             var index = ids.IndexOf(id);
@@ -292,12 +310,20 @@ namespace ExpresionesLogicas
             return null;
             
         }
-
+        /// <summary>
+        /// Permite limpiar todos los valores que se encuentran en la tabla valores
+        /// </summary>
         public static void LimpiarValores ()
         {
             valores.Clear();
         }
 
+        /// <summary>
+        /// Permite construir una expresion  que se encuentra simplificada en una expresion completa,
+        /// por ejemplo: a= (p|q), b= (p&r) se necesta armar (a|b) entonces el resultado debe ser ((p|q)|(r&r))
+        /// </summary>
+        /// <param name="expresion"></param>
+        /// <returns></returns>
         public static string ArmarExpresionFinal (string expresion)
         {
             string nuevaExpresion = "";
