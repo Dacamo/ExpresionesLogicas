@@ -1,11 +1,11 @@
-﻿using ExpresionesLogicas.ManejadorErrores;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace ExpresionesLogicas
 {
-    public class Utilidades
+    public static class Utilidades
     {
         static List<string> ids = new List<string> { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j" };
         static List<string> valores = new List<string>();
@@ -130,7 +130,7 @@ namespace ExpresionesLogicas
 
             if (expresionDestino.Count > 3)
             {
-                GestorErrores.Reportar("Expresion no balanceada, se resuelve parcialmente");            
+                throw new Exception("La expresion no está balanceada");          
             }
             valoresFinales = valores;
             return diccionario;
@@ -326,7 +326,7 @@ namespace ExpresionesLogicas
         /// <returns></returns>
         public static string ArmarExpresionFinal (string expresion)
         {
-            string nuevaExpresion = "";
+            StringBuilder nuevaExpresion = new StringBuilder();
             int index = 0;
            
             foreach (var item in expresion)
@@ -334,19 +334,19 @@ namespace ExpresionesLogicas
                 if(char.IsLetter(item) && item != 'p' && item != 'q' && item != 'r' )
                 {
                     index = ids.IndexOf(item.ToString());
-                    nuevaExpresion += valores[index];
+                    nuevaExpresion.Append(valores[index]);
                     
                 }
                 else
                 {
-                    nuevaExpresion += item;
+                    nuevaExpresion.Append(item);
                 }
             }
             
-             valores[valores.IndexOf(expresion)] = nuevaExpresion;
+             valores[valores.IndexOf(expresion)] = nuevaExpresion.ToString();
             
             
-            return nuevaExpresion;
+            return nuevaExpresion.ToString();
 
         }
 

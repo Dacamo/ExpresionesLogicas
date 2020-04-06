@@ -1,15 +1,13 @@
 ﻿using ExpresionesLogicas.ManejadorErrores;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace ExpresionesLogicas
 {
-    public class Analizador
+    public static class Analizador
     {   
         public static Dictionary<string, List<string>> AnalizarExpresion (string expresion)
         {
-            Dictionary<string, List<string>> diccionarioOrigen = new Dictionary<string, List<string>>();
+            Dictionary<string, List<string>> diccionarioOrigen;
         
             var caracteres = Utilidades.ReconocerCaracteres(expresion);
             diccionarioOrigen = Utilidades.ReconocerProposiciones(expresion);

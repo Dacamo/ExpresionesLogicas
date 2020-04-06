@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace ExpresionesLogicas
 {
-    public class Validaciones
+    public static class Validaciones
     {
         /// <summary>
         /// Se recibe una lista de caracteres y si encuentra un operador seguido de otro operador se retorna false, por ejemplo: (POOP) retorna false, (POP) retorna true.
@@ -19,7 +19,7 @@ namespace ExpresionesLogicas
                 {
                     if (caracteres[i].Equals(caracteres[i + 1]) && caracteres[i].Equals("O"))
                     {
-                        GestorErrores.Reportar(Error.OPERADORES);
+                        GestorErrores.Reportar(Error.Operadores);
                         return false;
                     }
                     
@@ -40,7 +40,7 @@ namespace ExpresionesLogicas
                 {
                     if (caracteres[i].Equals(caracteres[i + 1]) && caracteres[i].Equals("P"))
                     {
-                        GestorErrores.Reportar(Error.PROPOSICIONES);
+                        GestorErrores.Reportar(Error.Proposiciones);
                         return false;
                     }
                 }
@@ -61,13 +61,13 @@ namespace ExpresionesLogicas
                 {
                     if (caracteres[i].Equals("(") && caracteres[i+1].Equals(")"))
                     {
-                        GestorErrores.Reportar(Error.PARENTESIS_ABRE_CIERRA);
+                        GestorErrores.Reportar(Error.ParentesisAbreCierra);
                         return false;
                     }
 
                     if (caracteres[i].Equals(")") && caracteres[i + 1].Equals("("))
                     {
-                        GestorErrores.Reportar(Error.PARENTESIS_ABRE_CIERRA);
+                        GestorErrores.Reportar(Error.ParentesisAbreCierra);
                         return false;
                     }
                 }
@@ -98,7 +98,7 @@ namespace ExpresionesLogicas
 
             if (parentesisAbre.Count != parentesisCierra.Count)
             {
-                GestorErrores.Reportar(Error.PARENTESIS);
+                GestorErrores.Reportar(Error.Parentesis);
                 return false;
             }
             return true;
@@ -113,7 +113,7 @@ namespace ExpresionesLogicas
         {
            if(caracteres.Count==0)
             {
-                GestorErrores.Reportar(Error.EXPRESION_VACIA);
+                GestorErrores.Reportar(Error.ExpresionVacia);
                 return false;
             }
             return true;

@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using ExpresionesLogicas;
 
@@ -62,7 +58,7 @@ namespace ExpresionesLogicasUI
                     cantidad+=1;
                 }
             }
-            if(cantidad>=2 & cantidad <= 6)
+            if(cantidad>=2 && cantidad <= 6)
             {
                 cantidadProposicionesValidas = true;
             }
@@ -88,45 +84,50 @@ namespace ExpresionesLogicasUI
                     dataGridView1.DataSource = null;
                     dataGridView1.AllowUserToOrderColumns = false;
 
-
-                    //Analizar expresion
-                    expresion = "(" + expresion + ")";
-                    var diccionario = Analizador.AnalizarExpresion(expresion);
-
-                    //recorrer el diccionario e imprimirlo en el datagridview
-                    foreach (var item in diccionario)
+                    try
                     {
-                        var nuevaExpresion = "";
-                        var valorById = Analizador.ObtenerValorById(item.Key);
-                        if (valorById == null)
+                        //Analizar expresion
+                        expresion = "(" + expresion + ")";
+                        var diccionario = Analizador.AnalizarExpresion(expresion);
+
+                        //recorrer el diccionario e imprimirlo en el datagridview
+                        foreach (var item in diccionario)
                         {
-                            nuevaExpresion = item.Key;
-                        }
-                        else
-                        {
-                            nuevaExpresion = Analizador.ArmarExpresion(valorById);
+                            var nuevaExpresion = "";
+                            var valorById = Analizador.ObtenerValorById(item.Key);
+                            if (valorById == null)
+                            {
+                                nuevaExpresion = item.Key;
+                            }
+                            else
+                            {
+                                nuevaExpresion = Analizador.ArmarExpresion(valorById);
+                            }
+
+                            dataGridView1.Columns.Add(item.Key, nuevaExpresion);
                         }
 
-                        dataGridView1.Columns.Add(item.Key, nuevaExpresion);
-                    }
-
-                    var cantidad = diccionario.ElementAt(0).Value.Count;
-                    int index = 0;
-                    var lista = new List<string>();
-                    for (int x = 0; x < cantidad; x++)
+                        var cantidad = diccionario.ElementAt(0).Value.Count;
+                        int index = 0;
+                        var lista = new List<string>();
+                        for (int x = 0; x < cantidad; x++)
+                        {
+                            for (int i = 0; i < diccionario.Count; i++)
+                            {
+                                var item = diccionario.ElementAt(i);
+                                lista.Add(item.Value[index]);
+                            }
+                            var vector = lista.ToArray();
+                            dataGridView1.Rows.Add(vector);
+                            lista.Clear();
+                            index++;
+                        }
+                        MostrarErrores();
+                        this.Size = new Size(1328, 431);
+                    }catch (Exception err)
                     {
-                        for (int i = 0; i < diccionario.Count; i++)
-                        {
-                            var item = diccionario.ElementAt(i);
-                            lista.Add(item.Value[index]);
-                        }
-                        var vector = lista.ToArray();
-                        dataGridView1.Rows.Add(vector);
-                        lista.Clear();
-                        index++;
+                        MessageBox.Show(err.Message);
                     }
-                    MostrarErrores();
-                    this.Size = new Size(1328, 431);
                 }
                 else
                 {
@@ -134,7 +135,7 @@ namespace ExpresionesLogicasUI
                 }
             }
             else { MessageBox.Show("La cantidad de proposiciones están limitadas a 2 como minimo y 6 como maximo\npor favor ingresa una cantidad valida",
-                "Cantidad de preposiciones no valida",MessageBoxButtons.OK,MessageBoxIcon.Error); }
+                "Cantidad de proposiciones no valida",MessageBoxButtons.OK,MessageBoxIcon.Error); }
             
 
         }
@@ -156,7 +157,7 @@ namespace ExpresionesLogicasUI
         private void btnP_Click(object sender, EventArgs e)
         {
 
-            if (valorIgual == true)
+            if (valorIgual)
             {
                 textBoxCalculadora.Clear();
                 valorIgual = false;
@@ -171,7 +172,7 @@ namespace ExpresionesLogicasUI
 
         private void btnQ_Click(object sender, EventArgs e)
         {
-            if (valorIgual == true)
+            if (valorIgual)
             {
                 textBoxCalculadora.Clear();
                 valorIgual = false;
@@ -185,7 +186,7 @@ namespace ExpresionesLogicasUI
 
         private void btnR_Click(object sender, EventArgs e)
         {
-            if (valorIgual == true)
+            if (valorIgual)
             {
                 textBoxCalculadora.Clear();
                 valorIgual = false;
@@ -200,7 +201,7 @@ namespace ExpresionesLogicasUI
 
         private void btnOperadorY_Click(object sender, EventArgs e)
         {
-            if (valorIgual == true)
+            if (valorIgual)
             {
                 textBoxCalculadora.Clear();
                 valorIgual = false;
@@ -214,7 +215,7 @@ namespace ExpresionesLogicasUI
 
         private void btnOperadorO_Click(object sender, EventArgs e)
         {
-            if (valorIgual == true)
+            if (valorIgual)
             {
                 textBoxCalculadora.Clear();
                 valorIgual = false;
@@ -229,7 +230,7 @@ namespace ExpresionesLogicasUI
 
         private void btnImplicacion_Click(object sender, EventArgs e)
         {
-            if (valorIgual == true)
+            if (valorIgual)
             {
                 textBoxCalculadora.Clear();
                 valorIgual = false;
@@ -243,7 +244,7 @@ namespace ExpresionesLogicasUI
 
         private void btnSiYSoloSi_Click(object sender, EventArgs e)
         {
-            if (valorIgual == true)
+            if (valorIgual)
             {
                 textBoxCalculadora.Clear();
                 valorIgual = false;
@@ -257,7 +258,7 @@ namespace ExpresionesLogicasUI
 
         private void BtnParentesisAbre_Click(object sender, EventArgs e)
         {
-            if (valorIgual == true)
+            if (valorIgual)
             {
                 textBoxCalculadora.Clear();
                 valorIgual = false;
@@ -273,7 +274,7 @@ namespace ExpresionesLogicasUI
 
         private void BtnParentesisCierra_Click(object sender, EventArgs e)
         {
-            if (valorIgual == true)
+            if (valorIgual)
             {
                 textBoxCalculadora.Clear();
                 valorIgual = false;
@@ -301,7 +302,7 @@ namespace ExpresionesLogicasUI
 
             if ((Array.IndexOf(proposiciones, caracter) != -1)|| caracter == "(")
             {
-                if (ultimoCaracter != ")" & ultimoCaracter != "p" & ultimoCaracter != "q" & ultimoCaracter != "r")
+                if (ultimoCaracter != ")" && ultimoCaracter != "p" && ultimoCaracter != "q" && ultimoCaracter != "r")
                 {
                     textBoxCalculadora.Text += caracter;
                 }
@@ -310,9 +311,9 @@ namespace ExpresionesLogicasUI
                     MessageBox.Show("no se puede usar " + caracter + " despues de " + ultimoCaracter);
                 }
             }
-            else if (Array.IndexOf(operadoresLogicos, caracter) != -1 | caracter == ")")
+            else if (Array.IndexOf(operadoresLogicos, caracter) != -1 || caracter == ")")
             {
-                if ((Array.IndexOf(operadoresLogicos, ultimoCaracter) != -1) | ultimoCaracter == "(")
+                if ((Array.IndexOf(operadoresLogicos, ultimoCaracter) != -1) || ultimoCaracter == "(")
                 {
                     MessageBox.Show("no se puede usar el operador " + caracter + " despues de " + ultimoCaracter);
                 }
